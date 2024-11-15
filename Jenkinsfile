@@ -1,8 +1,8 @@
 pipeline {
     agent any
     tools{
-        jdk 'jdk17'
-        maven 'maven3'
+        jdk 'jdk17'   #jdk-tool type,jdk17-name configured in global tool
+        maven 'maven3' #maven-tool type,maven3-name configured in global tool
     }
     environment{
         SCANNER_HOME= tool 'sonar-scanner'  #name in tool configuration
