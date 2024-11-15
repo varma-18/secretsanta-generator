@@ -40,9 +40,9 @@ pipeline {
         }
 
 
-        stage('Sonar Analysis') {
+        stage('Sonar Analysis') {                       #if u want 2 acccess any server we need servel url and username,password that we configured in system
             steps {
-               withSonarQubeEnv('sonar'){    #name in system
+               withSonarQubeEnv('sonar'){               #name in system
                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Santa \
                    -Dsonar.java.binaries=. \
                    -Dsonar.projectKey=Santa '''
