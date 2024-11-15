@@ -15,7 +15,7 @@ pipeline {
             }
         }
 
-        stage('Code-Compile') {
+        stage('Code-Compile') {    # to find out any syntax based errors in our code
             steps {
                sh "mvn clean compile"
             }
