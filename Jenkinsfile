@@ -26,8 +26,13 @@ pipeline {
                sh "mvn test"
             }
         }
+	 stage('File System Scan') {
+            steps {
+                sh "trivy fs --format table -o trivy-fs-report.html ."
+            }
+        }   
         
-		stage('OWASP Dependency Check') {
+	stage('OWASP Dependency Check') {
             steps {
                dependencyCheck additionalArguments: ' --scan ./ ', odcInstallation: 'DC'
                     dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
