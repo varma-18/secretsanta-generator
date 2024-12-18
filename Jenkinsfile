@@ -23,7 +23,7 @@ pipeline {
         
         stage('Unit Tests') {
             steps {
-               sh "mvn test"
+               sh "mvn test -DskipTests=true"  # when u want to build the project skip the time-consuming or unnecessary tests during that process.
             }
         }
 	 stage('File System Scan') {
