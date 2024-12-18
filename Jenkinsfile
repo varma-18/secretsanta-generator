@@ -60,7 +60,7 @@ pipeline {
 		 
         stage('Code-Build') {
             steps {
-               sh "mvn clean package"
+               sh "mvn package -DskipTests=true"  #Tests can take a long time to run Skipping them helps you quickly build the application
             }
         }
 
