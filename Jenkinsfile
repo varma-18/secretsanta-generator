@@ -1,10 +1,10 @@
 pipeline {
     agent any
-    tools{
+    tools{   #we are defining the tools in tools section which are managed by the jenkins
         jdk 'jdk17'   #jdk-tool type,jdk17-name configured in global tool
         maven 'maven3' #maven-tool type,maven3-name configured in global tool
     }
-    environment{
+    environment{  #create a variable that points to the home directory of sonarqube tool
         SCANNER_HOME= tool 'sonar-scanner'  #name in tool configuration
     }
 
@@ -60,7 +60,7 @@ pipeline {
 		 
         stage('Code-Build') {
             steps {
-               sh "mvn package -DskipTests=true"  #Tests can take a long time to run Skipping them helps you quickly build the application
+               sh "mvn package -DskipTests=true"  #Tests can take a long time to run, Skipping them helps you quickly build the application
             }
         }
 
@@ -90,7 +90,7 @@ pipeline {
             steps {
                sh "trivy image adijaiswal/santa123:latest "
             }
-        }}
+        }
         
          post {
             always {
